@@ -15,12 +15,12 @@ router.post('/register', async(req, res)=>{
             email
         ]);
 
-        // res.json(user.row)
-        if(user.rows.length !== 0){
-            return res.status(401).send("User already exits");
-        };
+        res.json(user.row)
+        
         
         // 3. Bcypt the user password
+
+        const saltRound = 10
 
         // 4. enter the new user inside the database
 
