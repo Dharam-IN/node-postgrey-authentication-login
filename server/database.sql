@@ -1,6 +1,6 @@
 CREATE DATABASE attendance;
 
-CREATE TABLE employees (
+CREATE TABLE users (
     user_id uuid DEFAULT uuid_generate_v4() PRIMARY KEY,
     user_name VARCHAR(255) NOT NULL,
     user_email VARCHAR(255) NOT NULL,
