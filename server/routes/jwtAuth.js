@@ -10,6 +10,7 @@ router.post('/register', async(req, res)=>{
         // 1. destructure the req.body (name, email, password)
 
         const {name, email, password} = req.body;
+        // console.log(req.body)
 
         // 2. check if user exits (if user exist then throw error)
 
@@ -17,7 +18,7 @@ router.post('/register', async(req, res)=>{
             email
         ]);
 
-        // res.json(user.row)
+        res.json(user.row)
         if (user.rows.length > 0) {
             return res.status(400).json({ error: "User with this email already exists" });
         }
@@ -39,7 +40,7 @@ router.post('/register', async(req, res)=>{
 
         const token = jwtGenerator(newUser.rows[0].user_id);
 
-        // res.json({token})
+        res.json({token})
         res.json({
             user: newUser.rows[0],
             token: token, // Send the JWT token along with the user data
