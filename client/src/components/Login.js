@@ -1,10 +1,10 @@
 import React from "react";
 
-const Login = (props)=>{
+const Login = ({setAuth})=>{
     return(
         <>
             <h1>Login</h1>
-            <button type="button" onClick={()=>{setAuth}}>Click</button>
+            <button type="button" onClick={()=>setAuth(true)}>Click</button>
         </>
     )
 }

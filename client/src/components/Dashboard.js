@@ -1,9 +1,10 @@
 import React from "react";
 
-const Dashboard = ()=>{
+const Dashboard = ({setAuth})=>{
     return(
         <>
             Dashboard
+            <button type="button" onClick={setAuth(false)}>Click</button>
         </>
     )
 }

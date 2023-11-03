@@ -9,16 +9,18 @@ function App() {
   const [isAuthenticated, setisAuthenticate] = useState(false);
 
   const setAuth = (boolean)=>{
-    setisAuthenticate(setAuth);
+    setisAuthenticate(boolean);
   }
   
   return (
     <Router>
+      <div className="container">
       <Routes>
         <Route path="/login" element={!isAuthenticated ? <Login setAuth={setAuth}/> : <Navigate to="/dashboard" />} />
         <Route path="/register" element={!isAuthenticated ? <Register setAuth={setAuth}/> : <Navigate to="/login" />} />
         <Route path="/dashboard" element={isAuthenticated ? <Dashboard setAuth={setAuth}/> : <Navigate to="/login"/>} />
       </Routes>
+      </div>
     </Router>
   );
 }
