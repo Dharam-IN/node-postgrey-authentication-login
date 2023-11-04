@@ -20,10 +20,15 @@ router.post('/register', validinfo, async(req, res)=>{
             email
         ]);
 
+        console.log(user)
+        console.log("END///////")
+
         // res.json(user.row)
+        console.log(user.rows.length)
         if (user.rows.length > 0) {
             return res.status(400).json({ error: "User with this email already exists" });
         }
+
         
         
         // 3. Bcypt the user password
@@ -63,7 +68,7 @@ router.post("/login", validinfo, async(req, res)=>{
         const user = await pool.query("SELECT * FROM users WHERE user_email = $1", [email])
 
         if(user.rows.length === 0){
-            return res.status(401).send("Password or Email is incorrect")
+            return res.status(401).json("Password or Email is incorrect")
         }
         // 3. check if incomming password is the same password database password
 
@@ -81,7 +86,7 @@ router.post("/login", validinfo, async(req, res)=>{
 
     } catch (error) {
         console.log(error.message);
-        res.status(500).send("Server Error")
+        res.status(500).send("Server Error");
     }
 })
 
@@ -94,4 +99,4 @@ router.get("/is-verify",authorization, async (req,res)=>{
     }
 })
 
-module.exports = router
+module.exports = router;
