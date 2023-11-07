@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom"
 import "./css/forms.css";
 import img1 from "./images/upflair.png";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = ({ setAuth }) => {
 
@@ -37,12 +38,18 @@ const Login = ({ setAuth }) => {
                 localStorage.setItem("token", parseRes.token)
 
                 setAuth(true)
-                toast.success("Loged successfully")
+                // toast.success("Loged successfully")
+                toast('Login Successfully', {
+                    position: "top-center"
+                });
             }else{
                 setAuth(false);
-                toast.error(parseRes);
+                // toast.error(parseRes);
+                // console.log("wronf username and pass")
+                toast.error('Password or email is incorrect', {
+                    position: "top-center"
+                });
             }
-
             
         } catch (err) {
             console.error(err.message)
@@ -51,14 +58,6 @@ const Login = ({ setAuth }) => {
 
     return (
         <>
-            {/* <h1>Login</h1>
-            <form onSubmit={onSubmitForm}>
-                <input type="email" className="form-control my-3" name="email" value={email} placeholder="email" onChange={e=>onChange(e)}/>
-                <input type="password" className="form-control my-3" name="password" value={password} placeholder="password" onChange={e=>onChange(e)}/>
-                <button type="submit" className="btn btn-success d-block">Submit</button>
-                <Link to="/register">Register</Link>
-            </form> */}
-
             <div className="main_div_bg">
                 <div>
                     <img src={img1} alt="img" className="upflair" />
@@ -104,6 +103,7 @@ const Login = ({ setAuth }) => {
                     </div>
                 </section>
             </div>
+            <ToastContainer />
         </>
     )
 }

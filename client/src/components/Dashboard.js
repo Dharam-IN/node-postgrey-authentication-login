@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Dashboard = ({setAuth})=>{
 
@@ -15,6 +17,9 @@ const Dashboard = ({setAuth})=>{
             // console.log(parseRes)
 
             setname(parseRes.user_name)
+            toast('Welcome To Dashboard', {
+                position: "top-center"
+            });
 
         } catch (err) {
             console.error(err.message)
@@ -33,8 +38,11 @@ const Dashboard = ({setAuth})=>{
 
     return(
         <>
-            Dashboard{name}
+            Dashboard 
+            <h1>Welcome {name}</h1>
             <button type="button" onClick={e=>{logout(e)}}>Log Out</button>
+            
+            <ToastContainer />
         </>
     )
 }

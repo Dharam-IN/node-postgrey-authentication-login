@@ -1,10 +1,10 @@
 import React,{useEffect, useState} from "react";
 import {BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom";
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 import Register from "./components/Register";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {

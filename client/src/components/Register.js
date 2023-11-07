@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./css/forms.css";
 import img1 from "./images/upflair.png";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = ({ setAuth }) => {
 
@@ -31,9 +33,19 @@ const Register = ({ setAuth }) => {
             });
 
             const parseRes = await response.json()
-            // console.log(parseRes)
-            localStorage.setItem("token", parseRes.token);
-            setAuth(true);
+
+            if(parseRes.token){
+                localStorage.setItem("token", parseRes.token);
+                setAuth(true);
+                toast('Login Successfully', {
+                    position: "top-center"
+                });
+            }else{
+                setAuth(false);
+                toast.error('Please enter valid info', {
+                    position: "top-center"
+                });
+            }
         } catch (err) {
             console.error(err.message);
         }
@@ -108,6 +120,7 @@ const Register = ({ setAuth }) => {
                     </div>
                 </section>
             </div>
+            <ToastContainer />
         </>
     )
 }
